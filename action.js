@@ -1,13 +1,14 @@
-var Test = function (name, create, destroy) {
-	this._name = name;
-	this._create = create;
-	this._destroy = destroy;
+function Test (name, set, unset) {
+	this.name = name;
+	this._set = set;
+	this._unset = unset;
 }
 
 (function () {
 	var TestArea = {};
 	
-	TestArea._list = [];
+	var list = [];
+	var current = 0;
 	
 	TestArea.init = function () {
 		TestArea.container = document.getElementById('test');
@@ -20,26 +21,52 @@ var Test = function (name, create, destroy) {
 			}
 			TestArea.buttons[i].classList.add('b'+randomize);
 		}
+		
 	}
 	
 	TestArea.reset = function () {
-		if( TestArea.current instanceof Test) {
-			TestArea.current._destroy();
+		if( current instanceof Test) {
+			current._destroy();
 		}
 	}
 	
-	TestArea.addTest = function (test) {
+	TestArea.add = function (test) {
 		if( test instanceof Test ) {
-			TestArea._list.push(test);
+			list.push(test);
 		}
 	}
 	
-	TestArea._setTest = function (test) {
+	//unsets the current test and sets the next one
+	TestArea.next = function (test) {
+		current++;
+		if( !setTest(list[current]) ) {
+			TestArea.showResults();
+		}
+	}
+	
+	TestArea.showResults = function () {
+		//TODO
+	}
+	
+	/**
+	 * Private functions
+	 */
+	var setTest = function (test) {
+	
+		//test could be the index in list[]
+		if( !isNaN( test ) ) try {
+			test = list[test];
+		} catch (e) {}
+		
 		if( test instanceof Test ) {
-			if( TestArea.current instanceof Test) {
-				TestArea.current._destroy();
+			if( current instanceof Test) {
+				TestArea.container.classList.remove(current.name);
+				current._unset();
 			}
-			test._create();
+			test._set();
+			return true;
+		} else {
+			return false
 		}
 	}
 	
