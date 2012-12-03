@@ -6,7 +6,7 @@
 	background-color: #0007bd;
 	color: #ccc;
 }
-[data-test=color] [data-value=red] {
+[data-test=color] [data-value=Red] {
 	background-color: #bd0049;
 	color: #ccc;
 }
