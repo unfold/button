@@ -1,23 +1,30 @@
-[data-test=color] [data-value=black] {
-	background-color: #000000;
-	color: #ccc;
-}
-[data-test=color] [data-value=blue] {
-	background-color: #0007bd;
-	color: #ccc;
-}
-[data-test=color] [data-value=red] {
-	background-color: #bd0049;
-	color: #ccc;
-}
-.color .b1{
-	background-color: #ccc;
-	color: bd0049;
+[data-test=color] [data-value=Red] {
+	background: red;
+	color: white;
 }
 
-.font-0 {
-	
+[data-test=color] [data-value=Blue] {
+	background: blue;
+	color: white;
 }
-.font-1 {
-	
+
+[data-test=color] [data-value=Black] {
+	background: black;
+	color: white;
+}
+
+[data-test=color] [data-value=Yellow] {
+	background: yellow;
+	color: black;
+}
+
+[data-test=color] [data-value=Green] {
+	background: green;
+	color: white;
+}
+
+[data-test=color] [data-value=White] {
+	background: white;
+	box-shadow: inset 0 0 1px black;
+	color: black;
 }
