@@ -22,8 +22,10 @@
 
 		TestArea.add(new Test({
 			name: 'attraction',
-			values: ['repulsion', 'attraction'],
-			set: function() {
+			values: ['Repulsion', 'Attraction'],
+			set: (function() {
+				var mousePosition = { x: 0, y: 0 };
+
 				var applyForce = function(element, target, multiplier) {
 					var position = element.position();
 					var distance = {
@@ -45,15 +47,27 @@
 					});
 				}
 
-				document.addEventListener('mousemove', function(e) {
-					var position = { x: e.clientX, y: e.clientY };
+				var applyForces = function() {
+					applyForce($('button[data-value=Repulsion]'), mousePosition, 18);
+					applyForce($('button[data-value=Attraction]'), mousePosition, -6);
+				};
 
-					applyForce($(TestArea.buttons[0]), position, 18);
-					applyForce($(TestArea.buttons[1]), position, -6);
+				$(document).on('mousemove', function(e) {
+					mousePosition = { x: e.clientX, y: e.clientY };
 				});
-			},
+
+				return function() {
+					$(document).on('mousemove', applyForces);
+					applyForces();
+				};
+			})(),
+
 			unset: function() {
-				document.removeEvent
+				$(document).off('mousemove');
+				$('button').css({
+					marginLeft: '',
+					marginTop: ''
+				});
 			}
 		}));
 

@@ -39,7 +39,7 @@
 /*position test*/
 [data-test=position] button{
 	position: absolute;
-} 
+}
 [data-test=position] [data-value=Top\ left] {
 	top: 10px;
 	left: 10px;
@@ -55,6 +55,18 @@
 [data-test=position] [data-value=Bottom\ right] {
 	bottom: 10px;
 	right: 10px;
+}
+
+/*attraction test*/
+[data-test=attraction] button {
+	position: absolute;
+	top: 50%;
+	left: 40%;
+	-webkit-transition: none;
+}
+
+[data-test=attraction] button:last-child {
+	left: 60%;
 }
 
 /*font test*/
@@ -86,21 +98,21 @@
 [data-test=shape] [data-value=Circle] {
    width: 140px;
    height: 140px;
-   background: red; 
-   -moz-border-radius: 70px; 
-   -webkit-border-radius: 70px; 
+   background: red;
+   -moz-border-radius: 70px;
+   -webkit-border-radius: 70px;
    border-radius: 70px;
 }
 
 
 [data-test=shape] [data-value=Square] {
-   width: 140px; 
-   height: 140px; 
-   background: blue; 
+   width: 140px;
+   height: 140px;
+   background: blue;
 }
 
 [data-test=shape] [data-value=Trapezium] {
-   height: 0; 
+   height: 0;
    width: 80px;
    border-bottom: 80px solid blue;
    border-left: 40px solid transparent;
