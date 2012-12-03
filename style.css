@@ -1,17 +1,15 @@
-html {
-	display: table;
-	width: 100%;
-	height: 100%;
-	font-family: sans-serif;
-}
-body {
+html, body {
 	margin: 0;
-	display: table-cell;
-	text-align: center;
-	vertical-align: middle;
-	height: 100%;
+	padding: 0;
 }
-
+html {
+	font-family: sans-serif;
+	text-align: center;
+	font-size: 2em;
+}
+#test{
+/*	min-height: 10em;*/
+}
 /*button reset*/
 button{
 	-moz-box-sizing: content-box;
@@ -40,8 +38,9 @@ button::-moz-focus-inner {
 
 /*button style*/
 button {
-	background: #eee;
+	background: black;
+	color: white;
 	padding: .5em 1em;
-	margin: 0 .5em;
-	-webkit-transition: all;
+	margin: 0 .5em 0;
+	-webkit-transition: all 1s;
 }
