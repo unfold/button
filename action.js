@@ -93,7 +93,7 @@ function Test (args) {
 	  e = e || window.event;  
 		var button = e.target || e.srcElement;
 		
-	  if(target.tagName.toLowerCase() === 'button') {  
+	  if(button.tagName.toLowerCase() === 'button') {  
 			var value = button.getAttribute('data-value');
 	  	//todo: do something with the acquired values
 	  	
