@@ -7,11 +7,22 @@
 	<link rel="stylesheet" href="style.css" type="text/css" />
 	<script type="text/javascript" src="action.js"></script>
 	<script type="text/javascript">
-	TestArea.add(new Test('color', function () {
-	
-	}, function () {
-	
-	}));
+		/* Test examples */
+		TestArea.add(new Test({
+			name: 'color',
+			values: ['red', 'blue', 'black']
+		}));
+
+		TestArea.add(new Test({
+			name: 'attraction',
+			values: ['repulsion', 'attraction'],
+			create: function() {
+
+			},
+			destroy: function() {
+
+			}
+		}));
 	</script>
 </head>
 
@@ -20,7 +31,8 @@
 	<h1>Button test</h1>
 	<div id="test">
 		<p>Pick the correct button</p>
-		<button type="button">Click me</button> <button type="button">Click me</button>
+		<button type="button">Click me</button>
+		<button type="button">Click me</button>
 	</div>
 </body>
 </html>
