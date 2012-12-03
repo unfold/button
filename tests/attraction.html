@@ -1,0 +1,58 @@
+<!doctype html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <style>
+            .button {
+                width: 100px;
+                height: 100px;
+                background: black;
+                color: white;
+                position: absolute;
+                top: 50%;
+            }
+
+            .button.one {
+                left: 40%;
+            }
+
+            .button.two {
+                left: 60%;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="button one">Click me!</div>
+        <div class="button two">Click me!</div>
+
+        <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+
+        <script>
+            var applyForce = function(element, target, multiplier) {
+                var position = element.position();
+                var distance = {
+                    x: position.left + element.width() * 0.5 - target.x,
+                    y: position.top + element.height() * 0.5 - target.y
+                };
+
+                var length = Math.sqrt(distance.x * distance.x + distance.y * distance.y);
+                var angle = Math.atan2(distance.y, distance.x);
+
+                element.css({
+                    marginLeft: Math.cos(angle) * Math.sqrt(length) * multiplier,
+                    marginTop: Math.sin(angle) * Math.sqrt(length) * multiplier
+                });
+            };
+
+            $(document).on('mousemove', function(e) {
+                var position = { x: e.clientX, y: e.clientY };
+
+                applyForce($('.button.one'), position, 15);
+                applyForce($('.button.two'), position, -6);
+            });
+        </script>
+    </body>
+</html>
