@@ -1,4 +1,12 @@
-.color .b0{
+[data-test=color] [data-value=black] {
+	background-color: #000000;
+	color: #ccc;
+}
+[data-test=color] [data-value=blue] {
+	background-color: #0007bd;
+	color: #ccc;
+}
+[data-test=color] [data-value=red] {
 	background-color: #bd0049;
 	color: #ccc;
 }

@@ -8,21 +8,18 @@ function Test (args) {
 (function () {
 	var TestArea = {};
 	
-	var list = [];
-	var current = 0;
+	TestArea.list = [];
+	
+	var list = TestArea.list;
+	var current = null;
 	
 	TestArea.init = function () {
 		TestArea.container = document.getElementById('test');
 		TestArea.buttons = TestArea.container.getElementsByTagName('button');
-		for(var i = TestArea.buttons.length-1; i >=0 ; i--) {
-			if( typeof randomize === 'undefined') {
-				var randomize = Math.round(Math.random());
-			} else {
-				var randomize = randomize?0:1;
-			}
-			TestArea.buttons[i].classList.add('b'+randomize);
-		}
 		
+		if(list.length) {
+			setTest(0);
+		}
 	}
 	
 	TestArea.reset = function () {
@@ -65,22 +62,22 @@ function Test (args) {
 		
 		if( test instanceof Test ) {
 			//reset the old test, if any
-			var previous = list[current-1];
+			var previous = list[current];
 			if( previous instanceof Test) {
 				TestArea.container.classList.remove(previous.name);
 				
-				if( typeof previous._unset === 'function' ) {
+				if( typeof previous.unset === 'function' ) {
 					previous.unset();
 				}
 			}
 			
 			//set the new test
+			TestArea.container.setAttribute('data-test', test.name);
+			setButtonsValues(test.values);
 			if( typeof test.set === 'function' ) {
 				test.set();
-				
-				TestArea.test.setAttribute('data-test-name', test.name);
-				setButtonsValues(test.values);
 			}
+			
 			return true;
 		} else {
 			return false
