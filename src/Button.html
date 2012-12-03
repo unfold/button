@@ -1,0 +1,20 @@
+<head>
+  <title>Button</title>
+</head>
+
+<body>
+  <h1>Results</h1>
+  {{> results}}
+</body>
+
+<template name="results">
+    <ul>
+        {{#each observations}}
+            {{> observation}}
+        {{/each}}
+    </ul>
+</template>
+
+<template name="observation">
+    <li>{{test}}, {{value}}, {{time}}</li>
+</template>
