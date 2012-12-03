@@ -11,14 +11,16 @@ function Test (args) {
 	TestArea.list = [];
 	
 	var list = TestArea.list;
-	var current = null;
+	var current = -1;
 	
 	TestArea.init = function () {
 		TestArea.container = document.getElementById('test');
 		TestArea.buttons = TestArea.container.getElementsByTagName('button');
 		
+		TestArea.container.addEventListener('click', buttonClick, false);
+		
 		if(list.length) {
-			setTest(0);
+			setTestId(0);
 		}
 	}
 	
@@ -36,30 +38,31 @@ function Test (args) {
 	
 	//unsets the current test and sets the next one
 	TestArea.next = function (test) {
-		!setTest() && TestArea.showResults();
+		!setTestId() && TestArea.showResults();
 	}
 	
 	TestArea.showResults = function () {
 		//TODO
+		console.log('done');
 	}
 	
 	/**
 	 * Private functions
 	 */
-	function setTest (test) {
-		if( test === undefined ) {
-			test = current+1;
+	function setTestId (id) {
+		if( id === undefined ) {
+			id = current+1;
 		}
 	
 		//test could be the index in list[]
-		if( typeof test === 'number' )  {
-			if( test < list.length-1 ) { //try the next one
-				test = list[test];
+		if( typeof id === 'number' )  {
+			if( id < list.length ) { //try the next one
+				var test = list[id];
 			} else {
 				return false;
 			}
 		}
-		
+		console.log(test.name)
 		if( test instanceof Test ) {
 			//reset the old test, if any
 			var previous = list[current];
@@ -78,11 +81,23 @@ function Test (args) {
 				test.set();
 			}
 			
+			current++;
+			
 			return true;
 		} else {
 			return false
 		}
 	}
+	
+	function buttonClick (e) {
+		var button = e.target;
+		var value = button.getAttribute('data-value');
+		console.log(value);
+		
+		TestArea.next();
+		
+	}
+	
 	function setButtonsValues (values) {
 		//shuffle values and set only the first two
 		//this also works if "values" are more than two
@@ -96,8 +111,7 @@ function Test (args) {
 	
 	window.TestArea = TestArea;
 	
-	
-		//+ Jonas Raoni Soares Silva
+	//+ Jonas Raoni Soares Silva
 	//@ http://jsfromhell.com/array/shuffle [v1.0]
 	
 	function shuffle (o){ //v1.0
