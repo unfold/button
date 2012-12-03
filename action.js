@@ -59,11 +59,16 @@ function Test (name, set, unset) {
 		} catch (e) {}
 		
 		if( test instanceof Test ) {
-			if( current instanceof Test) {
-				TestArea.container.classList.remove(current.name);
-				current._unset();
+			var previous = list[current-1];
+			if( previous instanceof Test) {
+				TestArea.container.classList.remove(previous.name);
+				if( typeof previous._unset === 'function' ) {
+					previous._unset();
+				}
 			}
-			test._set();
+			if( typeof test._set === 'function' ) {
+				test._set();
+			}
 			return true;
 		} else {
 			return false
