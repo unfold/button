@@ -7,10 +7,14 @@
 	<link rel="stylesheet" href="style.css" type="text/css" />
 	<script type="text/javascript" src="action.js"></script>
 	<script type="text/javascript">
-		/* Test examples */
 		TestArea.add(new Test({
 			name: 'color',
-			values: ['red', 'blue', 'black']
+			values: ['Red', 'Blue', 'Black', 'Yellow', 'Green', 'White']
+		}));
+
+		TestArea.add(new Test({
+			name: 'position',
+			values: ['Top left', 'Bottom right']
 		}));
 
 		TestArea.add(new Test({
@@ -22,6 +26,21 @@
 			destroy: function() {
 
 			}
+		}));
+
+		TestArea.add(new Test({
+			name: 'font',
+			values: ['Comic Sans', 'Arial', 'Georgia']
+		}));
+
+		TestArea.add(new Test({
+			name: 'position',
+			values: ['Top left', 'Bottom right']
+		}));
+
+		TestArea.add(new Test({
+			name: 'shape',
+			values: ['Square', 'Circle', 'Triangle', 'Pentagon']
 		}));
 	</script>
 </head>
