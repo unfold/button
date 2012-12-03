@@ -90,12 +90,15 @@ function Test (args) {
 	}
 	
 	function buttonClick (e) {
-		var button = e.target;
-		var value = button.getAttribute('data-value');
-		console.log(value);
+	  e = e || window.event;  
+		var button = e.target || e.srcElement;
 		
-		TestArea.next();
-		
+	  if(target.tagName.toLowerCase() === 'button') {  
+			var value = button.getAttribute('data-value');
+	  	//todo: do something with the acquired values
+	  	
+			TestArea.next();
+	  }  
 	}
 	
 	function setButtonsValues (values) {
