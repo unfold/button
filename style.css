@@ -42,5 +42,6 @@ button {
 	color: white;
 	padding: .5em 1em;
 	margin: 0 .5em 0;
-	-webkit-transition: all 1s;
+	border-radius: .5em;
+/*	-webkit-transition: all 1s;*/
 }

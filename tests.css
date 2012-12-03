@@ -59,7 +59,7 @@
 
 /*font test*/
 [data-test=font] [data-value=Comic\ Sans] {
-	font-family: 'Comic Sans';
+	font-family: 'Comic Sans MS';
 }
 [data-test=font] [data-value=Arial] {
 	font-family: Arial;
@@ -73,6 +73,7 @@
 	background: none;
 	font-size: 0;
 	margin: 0 20px;
+	border-radius: none;
 }
 [data-test=shape] [data-value=Triangle] {
    width: 0;
